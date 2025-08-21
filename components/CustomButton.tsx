@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 interface CustomButtonProps {
   title: string;
@@ -9,12 +9,36 @@ interface CustomButtonProps {
 const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress }) => {
   return (
     <TouchableOpacity
-      className="bg-blue-600 rounded-xl p-4 my-2"
+      style={styles.button}
       onPress={onPress}
+      activeOpacity={0.8}
     >
-      <Text className="text-white text-center font-semibold">{title}</Text>
+      <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#3b82f6',
+    borderRadius: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    shadowColor: '#3b82f6',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 6,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
 
 export default CustomButton;
